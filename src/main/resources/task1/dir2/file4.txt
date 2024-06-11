@@ -1,0 +1,3 @@
+int b = 5;
+foo;
+double c = 4;

@@ -1,0 +1,5 @@
+int a = 5;
+double b = 4.5;
+char z = 'z';
+foo;
+boom
