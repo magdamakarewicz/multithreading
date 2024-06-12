@@ -30,7 +30,7 @@ import java.util.concurrent.atomic.AtomicInteger;
             return null;
         }
 
-        public void processDir(String dirName) throws IOException {
+        public void processDir(String dirName) throws IOException, InterruptedException {
             File path = new File(dirName);
             if (path.isDirectory()) {
                 for (File f : Optional.ofNullable(path.listFiles()).orElse(new File[]{})) {
@@ -38,6 +38,8 @@ import java.util.concurrent.atomic.AtomicInteger;
                         processDir(f.getAbsolutePath());
                     } else {
                         blockingQueue.add(copyFileContent(f.getAbsolutePath()));
+                        //slowing down the producer for the task needs
+                        Thread.sleep(200);
                     }
                 }
             }
